@@ -16,7 +16,7 @@ const todoMock = [
   },
 ] as TodoProps[];
 
-type TodoProps = {
+export type TodoProps = {
   id: number;
   name: string;
   selected: boolean;
@@ -28,7 +28,10 @@ const Home: React.FC = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: "#fafafa" }}>
       <SafeAreaView style={{ padding: 20 }}>
-        <FlatList data={todoList} renderItem={({ item: tod }) => <Card />} />
+        <FlatList
+          data={todoList}
+          renderItem={({ item: todo }) => <Card data={todo} />}
+        />
       </SafeAreaView>
     </GestureHandlerRootView>
   );

@@ -1,10 +1,19 @@
 import React from "react";
 import { Text } from "react-native";
+import { TodoProps } from "../../screens/Home";
 
-// import { Container } from './styles';
+import * as Styles from "./styles";
 
-const Card: React.FC = () => {
-  return <Text>Oi</Text>;
+type CardProps = {
+  data: TodoProps;
+};
+
+const Card: React.FC<CardProps> = ({ data }: CardProps) => {
+  return (
+    <Styles.Container>
+      <Text> {data.name} </Text>
+    </Styles.Container>
+  );
 };
 
 export default Card;
