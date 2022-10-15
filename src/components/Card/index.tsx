@@ -1,5 +1,5 @@
-import React from "react";
-import { Text } from "react-native";
+import React, { useRef } from "react";
+import { Swipeable } from "react-native-gesture-handler";
 import { TodoProps } from "../../screens/Home";
 
 import * as Styles from "./styles";
@@ -9,10 +9,17 @@ type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ data }: CardProps) => {
+  const swipeableRef = useRef<Swipeable>(null);
+
   return (
-    <Styles.Container>
-      <Text> {data.name} </Text>
-    </Styles.Container>
+    <Swipeable
+      ref={swipeableRef}
+      rightThreshold={42}
+      overshootRight={false}
+      renderRightActions={() => <Styles.Delete></Styles.Delete>}
+    >
+      <Styles.Container></Styles.Container>
+    </Swipeable>
   );
 };
 
