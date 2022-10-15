@@ -13,10 +13,21 @@ export const Container = styled.View`
 `;
 
 export const Delete = styled.View`
+    height: 100%;
     padding-right: 40px;
     padding-left: 40px;
     justify-content: center;
     background-color: #f568b7;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+`;
+
+export const Success = styled.View`
+    height: 100%;
+    padding-right: 40px;
+    padding-left: 40px;
+    justify-content: center;
+    background-color: #5dd2d3;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 `;

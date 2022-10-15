@@ -16,6 +16,7 @@ const Card: React.FC<CardProps> = ({ data }: CardProps) => {
       ref={swipeableRef}
       rightThreshold={42}
       overshootRight={false}
+      renderLeftActions={() => <Styles.Success></Styles.Success>}
       renderRightActions={() => <Styles.Delete></Styles.Delete>}
     >
       <Styles.Container></Styles.Container>
