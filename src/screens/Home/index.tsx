@@ -14,6 +14,11 @@ const todoMock = [
     name: "Ir na academia",
     selected: false,
   },
+  {
+    id: 3,
+    name: "Ir na academia",
+    selected: false,
+  },
 ] as TodoProps[];
 
 export type TodoProps = {

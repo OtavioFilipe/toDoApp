@@ -1,3 +1,4 @@
+import { Feather } from "@expo/vector-icons";
 import React, { useRef } from "react";
 import { Swipeable } from "react-native-gesture-handler";
 import { TodoProps } from "../../screens/Home";
@@ -16,7 +17,11 @@ const Card: React.FC<CardProps> = ({ data }: CardProps) => {
       ref={swipeableRef}
       rightThreshold={42}
       overshootRight={false}
-      renderLeftActions={() => <Styles.Success></Styles.Success>}
+      renderLeftActions={() => (
+        <Styles.Success>
+          <Feather name="check-circle" size={20} color="#fff" />
+        </Styles.Success>
+      )}
       renderRightActions={() => <Styles.Delete></Styles.Delete>}
     >
       <Styles.Container></Styles.Container>
