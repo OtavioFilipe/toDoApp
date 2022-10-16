@@ -10,6 +10,7 @@ export const Container = styled.View`
     align-items: center;
     border-width: 0.5px;
     border-color: #d6d6d6;
+    margin-top: 10px;
 `;
 
 export const Delete = styled.View`
@@ -20,6 +21,7 @@ export const Delete = styled.View`
     background-color: #f568b7;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    margin-top: 10px;
 `;
 
 export const Success = styled.View`
@@ -30,4 +32,5 @@ export const Success = styled.View`
     background-color: #5dd2d3;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    margin-top: 10px;
 `;
