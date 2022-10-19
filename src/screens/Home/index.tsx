@@ -30,12 +30,37 @@ export type TodoProps = {
 const Home: React.FC = () => {
   const [todoList, setTodoList] = useState<TodoProps[]>(todoMock);
 
+  function onChangeStatusToDelete(id: number) {
+    setTodoList((oldState) => oldState.filter((todo) => todo.id !== id));
+  }
+
+  function onChangeStatusToCheck(id: number) {
+    setTodoList((oldState) =>
+      oldState.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            selected: true,
+          };
+        } else {
+          return todo;
+        }
+      })
+    );
+  }
+
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: "#fafafa" }}>
       <SafeAreaView style={{ padding: 20 }}>
         <FlatList
           data={todoList}
-          renderItem={({ item: todo }) => <Card data={todo} />}
+          renderItem={({ item: todo }) => (
+            <Card
+              data={todo}
+              onChangeStatusToDelete={onChangeStatusToDelete}
+              onChangeStatusToCheck={onChangeStatusToCheck}
+            />
+          )}
         />
       </SafeAreaView>
     </GestureHandlerRootView>

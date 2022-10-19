@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import React, { useRef } from "react";
-import { Alert, Text } from "react-native";
+import { Alert, Text, View } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 import { TodoProps } from "../../screens/Home";
 
@@ -8,9 +8,15 @@ import * as Styles from "./styles";
 
 type CardProps = {
   data: TodoProps;
+  onChangeStatusToDelete: (id: number) => void;
+  onChangeStatusToCheck: (id: number) => void;
 };
 
-const Card: React.FC<CardProps> = ({ data }: CardProps) => {
+const Card: React.FC<CardProps> = ({
+  data,
+  onChangeStatusToDelete,
+  onChangeStatusToCheck,
+}: CardProps) => {
   const swipeableRef = useRef<Swipeable>(null);
 
   function handleDelete() {
@@ -22,7 +28,7 @@ const Card: React.FC<CardProps> = ({ data }: CardProps) => {
       {
         text: "Sim",
         onPress: () => {
-          //onChangeStatusToDelete(id)
+          onChangeStatusToDelete(data.id);
         },
       },
     ]);
@@ -37,6 +43,7 @@ const Card: React.FC<CardProps> = ({ data }: CardProps) => {
       {
         text: "Sim",
         onPress: () => {
+          onChangeStatusToCheck(data.id);
           swipeableRef.current?.close();
         },
       },
@@ -44,30 +51,32 @@ const Card: React.FC<CardProps> = ({ data }: CardProps) => {
   }
 
   return (
-    <Swipeable
-      ref={swipeableRef}
-      rightThreshold={42}
-      overshootRight={false}
-      onSwipeableRightOpen={handleDelete}
-      onSwipeableLeftOpen={handleSuccess}
-      renderLeftActions={() => (
-        <Styles.Success>
-          <Feather name="check-circle" size={20} color="#fff" />
-        </Styles.Success>
-      )}
-      renderRightActions={() => (
-        <Styles.Delete>
-          <Feather name="trash" size={20} color="#fff" />
-        </Styles.Delete>
-      )}
-    >
-      <Styles.Container>
-        <Styles.Details>
-          <Feather name="bell" size={20} color="#fff" />
-        </Styles.Details>
-        <Text style={{ marginLeft: 30 }}>{data.name}</Text>
-      </Styles.Container>
-    </Swipeable>
+    <View style={{ marginTop: 10 }}>
+      <Swipeable
+        ref={swipeableRef}
+        rightThreshold={42}
+        overshootRight={false}
+        onSwipeableRightOpen={handleDelete}
+        onSwipeableLeftOpen={handleSuccess}
+        renderLeftActions={() => (
+          <Styles.Success>
+            <Feather name="check-circle" size={20} color="#fff" />
+          </Styles.Success>
+        )}
+        renderRightActions={() => (
+          <Styles.Delete>
+            <Feather name="trash" size={20} color="#fff" />
+          </Styles.Delete>
+        )}
+      >
+        <Styles.Container>
+          <Styles.Details>
+            <Feather name="bell" size={20} color="#fff" />
+          </Styles.Details>
+          <Text style={{ marginLeft: 30 }}>{data.name}</Text>
+        </Styles.Container>
+      </Swipeable>
+    </View>
   );
 };
 
