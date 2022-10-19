@@ -34,3 +34,12 @@ export const Success = styled.View`
     border-bottom-left-radius: 5px;
     margin-top: 10px;
 `;
+
+export const Details = styled.View`
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #3775fd;
+    opacity: 0.5px;
+`;

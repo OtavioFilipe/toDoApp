@@ -30,7 +30,10 @@ const Card: React.FC<CardProps> = ({ data }: CardProps) => {
       )}
     >
       <Styles.Container>
-        <Text>{data.name}</Text>
+        <Styles.Details>
+          <Feather name="bell" size={20} color="#fff" />
+        </Styles.Details>
+        <Text style={{ marginLeft: 30 }}>{data.name}</Text>
       </Styles.Container>
     </Swipeable>
   );
