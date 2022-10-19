@@ -16,7 +16,7 @@ const todoMock = [
   },
   {
     id: 3,
-    name: "Ir na academia",
+    name: "Estudar funcionalidades",
     selected: false,
   },
 ] as TodoProps[];

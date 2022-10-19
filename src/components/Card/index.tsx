@@ -10,6 +10,7 @@ type CardProps = {
   data: TodoProps;
   onChangeStatusToDelete: (id: number) => void;
   onChangeStatusToCheck: (id: number) => void;
+  isCheckColor?: "string";
 };
 
 const Card: React.FC<CardProps> = ({
@@ -18,6 +19,7 @@ const Card: React.FC<CardProps> = ({
   onChangeStatusToCheck,
 }: CardProps) => {
   const swipeableRef = useRef<Swipeable>(null);
+  const isCheckColor = data.selected ? "#5dd2d3" : "#3775fd";
 
   function handleDelete() {
     Alert.alert("Remover item", "Você tem certeza que quer remover?", [
@@ -70,8 +72,12 @@ const Card: React.FC<CardProps> = ({
         )}
       >
         <Styles.Container>
-          <Styles.Details>
-            <Feather name="bell" size={20} color="#fff" />
+          <Styles.Details style={{ backgroundColor: isCheckColor }}>
+            {data.selected ? (
+              <Feather name="check-circle" size={20} color="#fff" />
+            ) : (
+              <Feather name="bell" size={20} color="#fff" />
+            )}
           </Styles.Details>
           <Text style={{ marginLeft: 30 }}>{data.name}</Text>
         </Styles.Container>
