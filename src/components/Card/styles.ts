@@ -41,5 +41,5 @@ export const Details = styled.View`
     padding: 5px;
     border-radius: 3px;
     background-color: #3775fd;
-    opacity: 0.5px;
+    opacity: 0.5;
 `;

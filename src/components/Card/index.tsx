@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import React, { useRef } from "react";
-import { Text } from "react-native";
+import { Alert, Text } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 import { TodoProps } from "../../screens/Home";
 
@@ -13,11 +13,43 @@ type CardProps = {
 const Card: React.FC<CardProps> = ({ data }: CardProps) => {
   const swipeableRef = useRef<Swipeable>(null);
 
+  function handleDelete() {
+    Alert.alert("Remover item", "Você tem certeza que quer remover?", [
+      {
+        text: "Não",
+        onPress: () => swipeableRef.current?.close(),
+      },
+      {
+        text: "Sim",
+        onPress: () => {
+          //onChangeStatusToDelete(id)
+        },
+      },
+    ]);
+  }
+
+  function handleSuccess() {
+    Alert.alert("Confirmar", "Você tem certeza que deseja confirmar?", [
+      {
+        text: "Não",
+        onPress: () => swipeableRef.current?.close(),
+      },
+      {
+        text: "Sim",
+        onPress: () => {
+          swipeableRef.current?.close();
+        },
+      },
+    ]);
+  }
+
   return (
     <Swipeable
       ref={swipeableRef}
       rightThreshold={42}
       overshootRight={false}
+      onSwipeableRightOpen={handleDelete}
+      onSwipeableLeftOpen={handleSuccess}
       renderLeftActions={() => (
         <Styles.Success>
           <Feather name="check-circle" size={20} color="#fff" />
